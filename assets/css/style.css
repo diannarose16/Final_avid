@@ -1,0 +1,940 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Header container (Rectangle7) */
+.Rectangle7 {
+    width: 89%;
+    height: 124px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Logo (MainLogo1) */
+.MainLogo1 {
+    width: 125px;
+    height: 115px;
+    margin-right: 20px;
+    cursor: pointer; /* Changes cursor to pointer when hovering over the logo */
+}
+
+/* Search bar container (Frame49) */
+.search-bar-container {
+    width: 900px;
+    height: 45px;
+    background: #FFFAFA;
+    border: 2px solid #04641B;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    margin-left: 195px;
+    position: relative;
+    /* No hover effect here */
+}
+
+/* Input field */
+.search-input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    padding-left: 20px;
+    color: #333;
+}
+
+/* Search icon container */
+.search-icon {
+    width: 42px;
+    height: 42px;
+    background: #c6dfd2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* No hover effect here */
+}
+
+/* Search icon image */
+.search-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Cart container */
+.cart-container {
+    position: relative; /* Position it relative to the cart icon */
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    cursor: pointer; /* Change cursor to pointer when hovering */
+    margin-left: 225px;
+    z-index: 1;
+}
+
+/* Shopping cart icon */
+.cart-icon {
+    width: 42px;
+    height: 42px;
+}
+
+
+
+/* Cart info that appears when hovered */
+.cart-info {
+    position: absolute;
+    top: 125%; /* Makes it drop below the trigger */
+    left: -185px;
+    width: 390px;
+    max-height: 600px; /* Adjust based on your preference */
+    padding: 10px;
+    background-color: #FFFAFA;
+    border: 1px solid #04641B;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+    z-index: 1; /* Ensure it appears above other elements */
+}
+
+
+/* Show the cart info when hovering over the cart container */
+.cart-container:hover .cart-info {
+    opacity: 1; /* Makes the hidden cart info visible */
+    visibility: visible; /* Ensures it is interactable */
+    transition: opacity 0.3s ease, visibility 0s 0s; /* Smooth fade-in */
+}
+
+/* Green Added product signifier */
+.added-product-signifier {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(0, 128, 0, 0.5); /* Semi-transparent green */
+    margin-bottom: 5px; /* Space between the signifier and the text */
+}
+
+/* Arrow next to cart info */
+.cart-info::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Moves the arrow above the box */
+    left: 50%; /* Center the arrow */
+    transform: translateX(-50%); /* Centering the arrow horizontally */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #04641B; /* Green arrow pointing down */
+}
+
+/* Styling for the cart items list */
+.cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 180px; /* Adjust this based on your container height */
+    overflow: hidden; /* Prevent items from overflowing the container */
+}
+
+/* Individual cart item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Product image */
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 1px solid #ddd; /* Subtle border around images */
+}
+
+/* Item details container */
+.item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Item name */
+.item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333; /* Neutral text color */
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px; /* Prevent long names from breaking layout */
+}
+
+/* Item price */
+.item-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #04641B; /* Green to match design */
+    position: absolute;
+    margin-left: 248px;
+}
+
+/* Extra items text and button container */
+.view-more-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.view-more {
+    width: 38%;
+    padding: 8px;
+    background-color: #04641B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    height: 38px
+}
+
+.extra-items-text {
+    font-size: 14px;
+    color: #666; /* Subtle gray for extra items text */
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+
+
+
+/* Account Setting Container */
+.account-setting-container {
+    width: auto;
+    height: 51px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-left: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Image Style */
+.Image10 {
+    width: 42px;
+    height: 42px;
+}
+
+/* Account Name */
+
+.account_name {
+    color: black;
+    font-size: 19px;
+    font-family: 'Noto Music', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for hover and hover out */
+}
+
+/* Account Name hover effect */
+.account_name:hover {
+    color: #04641B;
+    transform: translateY(-2px); /* Slightly lifts the text on hover */
+}
+
+.drop-down-setting {
+    position: absolute;
+    top: 125%; /* Makes it drop below the trigger */
+    left: -185px;
+    width: 390px;
+    max-height: 200px; /* Adjust based on your preference */
+    padding: 10px;
+    background-color: #FFFAFA;
+    border: 1px solid #04641B;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+    z-index: 1; /* Ensure it appears above other elements */
+}
+
+
+/* Show the cart info when hovering over the cart container */
+.account-setting-container:hover .drop-down-setting {
+    opacity: 1; /* Makes the hidden cart info visible */
+    visibility: visible; /* Ensures it is interactable */
+    transition: opacity 0.3s ease, visibility 0s 0s; /* Smooth fade-in */
+}
+/* Account Setting Dropdown Styling */
+.account-dropdown {
+    position: absolute;
+    top: 77%; 
+    right: -50px; 
+    width: 200px; 
+    background-color: #FFFAFA;
+    border: 1px solid #04641B; 
+    border-radius: 8px;
+    padding: 5px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0s 0.3s; 
+    z-index: 1; 
+    color: black;
+    text-decoration: none;
+}
+
+setting{
+    text-decoration: none;
+    color: black;
+}
+
+/* Show the dropdown when hovering over the account setting container */
+.account-setting-container:hover .account-dropdown {
+    opacity: 1; 
+    visibility: visible; 
+    transition: opacity 0.3s ease, visibility 0s 0s; 
+}
+
+/* Arrow next to account-dropdown */
+.account-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #04641B; 
+}
+
+/* Dropdown Menu Items */
+.account-dropdown li {
+    list-style: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease; 
+}
+
+.account li{
+    color: black;
+}
+
+/* Hover effect for menu items */
+.account-dropdown li:hover {
+    background-color: rgba(4, 100, 27, 0.1); 
+    color: #04641B; 
+}
+
+/* Category Container */
+.category-container {
+    background-color: #ffffff; /* White background */
+    padding: 10px 20px;
+    border-top: 1px solid #ddd; /* Subtle bottom border */
+}
+
+/* Category List */
+.category-list {
+    display: flex; /* Align items horizontally */
+    justify-content: center; /* Space between buttons */
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    gap: 80px  ;
+}
+
+/* Category Items */
+.category-list li {
+    margin: 0 5px; /* Add spacing between categories */
+}
+
+/* Category Links */
+.category-list a {
+    display: inline-block;
+    padding: 8px 15px; /* Add padding for button-like feel */
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; /* Dark text color */
+    border: 1px solid #ccc; /* Border around the item */
+    border-radius: 15px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect */
+.category-list a:hover {
+    color: #121211; /* Change text color on hover */
+    border-color: #e5eb3c; /* Change border color on hover */
+    background-color: #fffed8; /* Subtle background change on hover */
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~BODY~~~~~~~~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~ RECOMMEND ~~~~~~~~~~~~*/
+.recommendation-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 100px;
+    margin-left: 65px;
+    position: relative;
+}
+
+/* Recommendation Title */
+.recommendation-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #666666;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.line-separator {
+    width: 100%;
+    border: 1px solid #ededed;
+    margin-bottom: 20px;
+}
+
+/* Product Group Styling */
+.product-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+/* Individual Product Card */
+.product-card {
+    width: 227px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Product Image Section */
+.product-image {
+    width: 150px;
+    height: 150px;
+    background: #f5f5f5;
+    border-radius: 16px;
+    border: 1px solid #ededed;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #6c0dab;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 0 16px 16px 0;
+}
+
+/* Product Info Section */
+.product-info {
+    width: 80%;
+    background: white;
+    border-radius: 16px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #222222;
+    margin-top: 10px;
+}
+
+.product-old-price {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.product-save {
+    font-size: 14px;
+    font-weight: 600;
+    color: #249b3e;
+    margin-top: 8px;
+}
+/* ~~~~~~~~~~~ END RECOMMEND ~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~ DEALS ~~~~~~~~~~~~*/
+/* Product Container */
+.product-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+    margin: 20px 0;
+}
+
+/* Timer */
+.timer {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Products */
+.products {
+    display: flex;
+    gap: 0px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Product Item */
+.product-item {
+    width: 15%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Aligns elements vertically */
+    justify-content: space-between; /* Ensures consistent alignment */
+    height: 300px; /* Fixed height for consistency */
+}
+
+/* Product Name */
+.product-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+    height: 40px; /* Fixed height for product name */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Price */
+.price {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #007bff;
+}
+
+/* Status */
+.status-deals {
+    font-size: 12px;
+    margin-top: 10px;
+    background-color: #f8fd63;
+    color: #000000;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    align-self: center; /* Center aligns the button */
+    margin-top: auto; /* Ensures button stays at the bottom */
+}
+
+/* Product Image */
+.product-item img {
+    width: 60%;
+    border-radius: 10px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .product-item {
+        width: 48%;
+        height: auto; /* Adjust height for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product-item {
+        width: 100%;
+        height: auto;
+    }
+}
+/* ~~~~~~~~~~~ END DEALS ~~~~~~~~~~~~*/
+
+/* ~~~~~~~~~~~ FOR YOU ~~~~~~~~~~~~*/
+/* General Section Styling */
+.product-section {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.section-header .see-more {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.section-header .see-more:hover {
+    text-decoration: underline;
+}
+
+/* Product Grid */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+/* Product Item */
+.product-item {
+    width: 18%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image */
+.product-item img {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Product Name */
+.product-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Price */
+.price {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #007bff;
+}
+
+/* Status */
+.status-for {
+    font-size: 12px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .product-item {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product-item {
+        width: 100%;
+    }
+}
+/* ~~~~~~~~~~~ END FOR YOU ~~~~~~~~~~~~*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~END BODY~~~~~~~~~~~~~~~~~~~*/
+
+
+     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~FOOTER~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/*     
+   .subfooter{
+    margin-top: 100px;
+       width: 100%;
+       height: 200px;
+       background-color: #3dac4c;
+       box-sizing: border-box;
+       font:bold 16px sans-serif;
+       padding: 30px 50px 60px 50px;
+       
+   }
+   .servicesfooterfooter-left,.servicesfooterfooter-center,.servicesfooterfooter-right{
+       display: inline-block;
+       vertical-align: top;
+   }
+   .servicesfooterfooter-left{
+       width: 30%
+   }
+    .servicesfooterhr{
+       color:#03361a;
+       font:normal 36px 'cookie', cursive;
+       margin:0;
+    }
+    .servicesfooter-span{
+       color: #c3ffc7;
+       font-family: fantasy;
+    }
+    .footer-links{
+       color:#c3ffc7;
+       margin: 20px 0 12px;
+    }
+    .footer-links a{
+       display: inline-block;
+       line-height: 1.8;
+       text-decoration: none;
+       color: inherit;
+    }
+    .footer-company-name{
+       color:#c3ffc7;
+       font-size: 14px;
+       font-weight: normal;
+       margin: 0;
+    }
+    .servicesfooterfooter-center{
+       width: 35%;
+       margin-left: 20px;
+    }
+    .servicesfooterfooter-center img{
+       color: #fff;
+       width: 30px;
+       height: 29px;
+       margin: 10px 6px;
+       vertical-align: middle;
+}
+.icon {
+   width: 28px;
+   position: relative;
+   margin: 1.7rem 0px;
+    }
+.servicesfooterfooter-center p{
+   display: inline-block;
+   color:#c3ffc7;
+   vertical-align: middle;
+   margin: 0;
+   font-weight: normal;
+   font-size: 14px;
+   line-height: 1;
+}
+.servicesfooterfooter-center p a{
+   color: #c3ffc7;
+   text-decoration: none;
+}
+
+.servicesfooterfooter-right{
+   width:30%;
+
+}
+
+.footer-company-about{
+   line-height: 20px;
+   color:#c3ffc7;
+   font-size: 13px;
+   font-weight: normal;
+   margin:0;
+}
+
+.footer-company-about span{
+   display: block;
+   color:#c3ffc7;
+   font-size: 18px;
+   font-weight: bold;
+   margin-bottom: 20px;
+
+}
+
+.footer-links a:hover{
+   color:white;
+} */
+
+
+/* General Footer Styling */
+.footer {
+    background-color: #19702d;
+    color: #fff;
+    padding: 40px 20px;
+    font-size: 14px;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+/* Footer Columns */
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin: 0 15px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #fcff3d;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 1px solid #ffffff;
+    padding-top: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    max-height: 66px;
+  
+}
+
+.footer-legal {
+    text-align: center;
+}
+
+.footer-legal p {
+    margin: 5px 0;
+}
+
+.footer-legal ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.footer-legal ul li {
+    margin: 0 10px;
+}
+
+.footer-legal ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal ul li a:hover {
+    color: #fcff3d;
+}
+
+/* Footer Social Icons */
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-social img {
+    height: 24px;
+    filter: invert(100%);
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover img {
+    transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .footer-sections {
+        flex-direction: column;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~END CSSfooter~~~~~~~~~~~~~~~~~~~~~~~~~MAY 6 */

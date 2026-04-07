@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Listing Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+        }
+       
+        /* admin-navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            color: #264653;
+        }
+        
+        .admin-navbar {
+            width: 250px;
+            background-color: #2a9d8f;
+            color: #fff;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-navbar h2 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+
+        .admin-navbar a {
+            text-decoration: none;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            padding: 15px 30px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .admin-navbar a:hover {
+            background-color: #264653;
+        }
+
+        .admin-navbar a.active {
+            background-color: #1b645c;
+            font-weight: bold;
+        }
+
+        .admin-navbar a i {
+            margin-right: 10px;
+        }
+
+        .add-item-btn {
+            background-color: #2a9d8f;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-item-btn:hover {
+            background-color: #1b645c;
+        }
+         /* Main Dashboard Content */
+         .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+        /* Modal Add Item Styling */
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.2rem;
+            color: #264653;
+        }
+
+        .close-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #264653;
+        }
+
+        .modal-body input,
+        .modal-body textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .modal-body ::placeholder {
+         color: #2a9d8f;;
+        }
+        .modal-body select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #2a9d8f; 
+        }
+
+        .modal-body button {
+            background-color: #2a9d8f;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-body button:hover {
+            background-color: #1b645c;
+        }
+        .modal-body h3 {
+            font-size: 1rem; 
+            font-weight: bold;
+            color: #2a9d8f; 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+        }
+         /* General Filter Container */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            background-color: #f1f8e9; 
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #c5e1a5; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+
+        /* Labels */
+        .filter-container label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #33691e; 
+            margin-right: 8px;
+        }
+
+        /* Filter Dropdown*/
+        .filter-dropdown {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #2e7d32; 
+            background-color: #ffffff; 
+            border: 1px solid #aed581; 
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+            transition: all 0.3s ease;
+        }
+
+        .filter-dropdown:hover {
+            border-color: #33691e; 
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); 
+        }
+
+        /* General Filter Container */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            background-color: #f2f2f2; 
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid #d9d9d9; 
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+            margin-bottom: 20px; 
+        }
+
+        /* Filter Labels */
+        .filter-container label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333333; 
+            margin-right: 8px;
+        }
+
+
+        .filter-dropdown:hover {
+            border-color: #999999; 
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+
+        /* Filter Date Input Fields */
+        .date-input {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333333;
+            background-color: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        /* Filter Apply Button */
+        .apply-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #2a9d8f; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            align-self: center; 
+            margin-left: 60px;
+        }
+
+        .apply-btn:hover {
+            background-color: #388e3c; 
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15); 
+        }
+        /* Tab Selector Container */
+        .tab-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .tab-header {
+            display: flex;
+            background-color: #2a9d8f;
+        }
+
+        .tab-header button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab-header button:hover {
+            background-color: #1b645c;
+        }
+
+        .tab-header button.active {
+            background-color: #ffffff;
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+
+        .listing-content {
+            padding: 20px;
+            display: none;
+        }
+
+        .listing-content.active {
+            display: block;
+        }
+
+        .listing-table-style {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        .table-row-listing {
+            display: table-row-listing;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-row-listing.header {
+            font-weight: bold;
+            background-color: #f5f5f5;
+            color: #333; 
+        }
+
+        .table-cell-listing {
+            display: table-cell-listing;
+            padding: 15px 10px;
+            text-align: left; 
+            vertical-align: middle;
+            width: auto; 
+        }
+
+        .table-cell-listing {
+            width: 5%; 
+        }
+
+        .table-cell-listing.product-action {
+            text-align: right;
+        }
+        .product-list .table-row-listing {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: nowrap; 
+        }
+
+        .product-list .table-cell-listing {
+            flex: 1; 
+            text-align: center; 
+            vertical-align: middle; 
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            white-space: normal; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+
+        .listing-product-details {
+            flex: 3; 
+            text-align: left;
+            line-height: 1.6;
+            color: #264653;
+        }
+
+
+        .listing-product-product-actions {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+        }
+
+        .listing-product-product-actions button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            width: 100px; 
+            text-align: center;
+        }
+
+        .listing-product-product-actions .product-pause-btn {
+            background-color: #f77f00;
+            color: #ffffff;
+        }
+
+        .listing-product-product-actions .product-pause-btn:hover {
+            background-color: #d86500;
+        }
+
+        .listing-product-product-actions .product-delete-btn {
+            background-color: #d62828;
+            color: #ffffff;
+        }
+
+        .listing-product-product-actions .product-delete-btn:hover {
+            background-color: #a31e1e;
+        }
+
+        .dispatched-status {
+            font-size: 0.85rem; 
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .listing-product-image {
+            max-width: 60px;
+            height: auto;
+            display: block;
+            border-radius: 4px; 
+        }
+        .product-pause-btn,
+        .product-delete-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .product-action .product-delete-btn {
+            background: #dc3545; 
+        }
+
+        .product-action .product-delete-btn:hover {
+            background: #a71d2a; 
+        }
+
+        .dispatched-status.pending {
+            background-color: #f9c74f;
+            color: #ffffff;
+        }
+
+        .dispatched-status.dispatched {
+            font-weight: bold;
+            color: green; 
+        }
+
+        
+
+        .listing-product-product-actions button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+
+        .listing-product-product-actions .product-pause-btn {
+            background-color: #f77f00;
+            color: #fff;
+        }
+
+        .listing-product-product-actions .product-pause-btn:hover {
+            background-color: #d86500;
+        }
+
+        .listing-product-product-actions .delete-btn {
+            background-color: #d62828;
+            color: #fff;
+        }
+
+        .listing-product-product-actions .delete-btn:hover {
+            background-color: #a31e1e;
+        }
+
+       
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .hidden.visible {
+                flex-direction: column;
+            }
+
+            .apply-btn {
+                width: 100%; /* Full width button for mobile */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Admin Header and Navbar Copy Paste lang to halin sa internet my nigga -->
+    <div class="admin-navbar">
+        <h2>Dashboard</h2>
+        <a href="#"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="#"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="#" class="active"><i class="fas fa-plus"></i> Listings</a>
+        <a href="#"><i class="fas fa-box"></i> Orders</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <!-- Listing container -->
+    <div class="main-content">
+        <div class="navbar">
+            <h1>Listing Dashboard</h1>
+            <button class="add-item-btn" onclick="toggleModal()">+ Add Item</button>
+        </div>
+        
+        <!-- Add item Modal -->
+        <div class="modal" id="addItemModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Item</h2>
+                    <button class="close-btn" onclick="toggleModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="Item Name" />
+                    <textarea placeholder="Item Description"></textarea>
+                    <input type="number" placeholder="Price" />
+                    <select>
+                        <option value="supplements">Supplements</option>
+                        <option value="vitamins">Vitamins</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="mental-wellness">Mental Wellness</option>
+                        <option value="wellness-tech">Wellness Tech</option>
+                        <option value="personal-care">Personal Care</option>
+                    </select>
+                    <h3>Select Color</h3>
+                    <input type="color" placeholder="Select Color" />
+                    <button onclick="addItem()">Add Item</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Filters non-functional -->
+    <div id="dispatchedFilter" class="filter-container">
+        <label for="dispatchedCategory">Category:</label>
+        <select id="dispatchedCategory" class="filter-dropdown">
+            <option value="all">All</option>
+            <option value="supplements">Supplements</option>
+            <option value="vitamins">Vitamins</option>
+            <option value="fitness">Fitness</option>
+            <option value="mental-wellness">Mental Wellness</option>
+            <option value="wellness-tech">Wellness Tech</option>
+            <option value="personal-care">Personal Care</option>
+        </select>
+
+        <label for="dispatchedPrice">Price:</label>
+        <select id="dispatchedPrice" class="filter-dropdown">
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+        </select>
+
+        <label for="dispatchedStatus">Status:</label>
+        <select id="dispatchedStatus" class="filter-dropdown">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+
+        <div id="dateFilters">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" class="date-input">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" class="date-input">
+        </div>
+
+        <button onclick="filterDispatchedItems()" class="apply-btn">Apply Filters</button>
+    </div>
+
+        <div class="tab-container">
+            <div class="tab-header">
+                <button class="active" onclick="showTab('items')">Items</button>
+                <button onclick="showTab('history')">Dispatched History</button>
+            </div>
+
+            <div id="items" class="listing-content active">
+                <div class="listing-label-content">
+                    <h3>Active Items</h3>
+                    <hr>
+                </div>
+                <div class="product-list listing-table-style">
+                    <!-- Header Row Category -->
+                    <div class="table-row-listing header">
+                        <div class="table-cell-listing">No.</div>
+                        <div class="table-cell-listing">Image</div>
+                        <div class="table-cell-listing">Name</div>
+                        <div class="table-cell-listing">Category</div>
+                        <div class="table-cell-listing">Price</div>
+                        <div class="table-cell-listing">Status</div>
+                        <div class="table-cell-listing product-action">Action</div>
+                    </div>
+            
+                    <!-- Data Rows Example -->
+                    <div class="table-row-listing">
+                        <div class="table-cell-listing">1</div>
+                        <div class="table-cell-listing"><img src="image1.jpg" alt="Red T-shirt" class="listing-product-image" /></div>
+                        <div class="table-cell-listing">Red T-shirt</div>
+                        <div class="table-cell-listing">Apparel</div>
+                        <div class="table-cell-listing">$100</div>
+                        <div class="table-cell-listing">Active</div>
+                        <div class="table-cell-listing product-action">
+                            <button class="product-pause-btn">Pause</button>
+                            <button class="product-delete-btn" onclick="deleteItem(this)">Delete</button>
+                        </div>
+                </div>
+                
+                    <div class="table-row-listing">
+                        <div class="table-cell-listing">2</div>
+                        <div class="table-cell-listing"><img src="image2.jpg" alt="Retro Tricycle" class="listing-product-image" /></div>
+                        <div class="table-cell-listing">Retro Tricycle</div>
+                        <div class="table-cell-listing">Children Toys</div>
+                        <div class="table-cell-listing">$220</div>
+                        <div class="table-cell-listing">Active</div>
+                        <div class="table-cell-listing product-action">
+                            <button class="product-pause-btn">Pause</button>
+                            <button class="product-delete-btn" onclick="deleteItem(this)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="history" class="listing-content">
+                <div class="listing-label-content">
+                    <h3>Dispatched Items</h3>
+                    <hr>
+                </div>
+                <div class="product-list listing-table-style">
+                    <!-- Header Row Category -->
+                    <div class="table-row-listing header">
+                        <div class="table-cell-listing">No.</div>
+                        <div class="table-cell-listing">Image</div>
+                        <div class="table-cell-listing">Name</div>
+                        <div class="table-cell-listing">Category</div>
+                        <div class="table-cell-listing">Price</div>
+                        <div class="table-cell-listing">Status</div>
+                        <div class="table-cell-listing product-action">Date</div>
+                    </div>
+            
+                    <!-- Data Rows Example -->
+                    <div class="table-row-listing">
+                        <div class="table-cell-listing">1</div>
+                        <div class="table-cell-listing"><img src="image3.jpg" alt="Blue Jacket" class="listing-product-image" /></div>
+                        <div class="table-cell-listing">Blue Jacket</div>
+                        <div class="table-cell-listing">Apparel</div>
+                        <div class="table-cell-listing">$200</div>
+                        <div class="table-cell-listing"><span class="dispatched-status dispatched">Dispatched</span></div>
+                        <div class="table-cell-listing product-action">11/20/22</div>
+                    </div>
+            
+                    <div class="table-row-listing">
+                        <div class="table-cell-listing">2</div>
+                        <div class="table-cell-listing"><img src="image4.jpg" alt="Wireless Headphones" class="listing-product-image" /></div>
+                        <div class="table-cell-listing">Wireless Headphones</div>
+                        <div class="table-cell-listing">Electronics</div>
+                        <div class="table-cell-listing">$150</div>
+                        <div class="table-cell-listing"><span class="dispatched-status dispatched">Dispatched</span></div>
+                        <div class="table-cell-listing product-action">11/20/22</div>
+                    </div>
+                </div>
+            </div>
+            
+</div>
+    <script>
+        //Make the modal visible function
+        function toggleModal() {
+            const modal = document.getElementById('addItemModal');
+            modal.classList.toggle('active');
+        }
+
+
+
+    // Function to delete the item from the table
+    function deleteItem(button) {
+        const row = button.closest('.table-row-listing');
+        row.remove();
+    }
+
+
+
+    // Show the selected tab
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.listing-content');
+        const buttons = document.querySelectorAll('.tab-header button');
+
+        // Remove 'active' class from all tabs and buttons
+        tabs.forEach(tab => tab.classList.remove('active'));
+        buttons.forEach(button => button.classList.remove('active'));
+
+        // Show the selected tab
+        document.getElementById(tabId).classList.add('active');
+        buttons.forEach(button => {
+            if (button.textContent.toLowerCase().includes(tabId)) {
+                button.classList.add('active');
+            }
+        });
+
+    }
+
+
+    </script>
+</body>
+</html>

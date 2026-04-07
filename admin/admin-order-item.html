@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Dispatch Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        /* admin-navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            color: #264653;
+        }
+        
+        .admin-navbar {
+            width: 250px;
+            background-color: #2a9d8f;
+            color: #fff;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-navbar h2 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+
+        .admin-navbar a {
+            text-decoration: none;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            padding: 15px 30px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .admin-navbar a:hover {
+            background-color: #264653;
+        }
+
+        /* Active link styling */
+        .admin-navbar a.active {
+            background-color: #1b645c;
+            font-weight: bold;
+        }
+
+        .admin-navbar a i {
+            margin-right: 10px;
+        }
+
+        /* Main Dashboard Content */
+        .order-content {
+            flex: 1;
+            padding: 30px;
+        }
+        /* Orders Section */
+        .orders-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .orders-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #264653;
+        }
+
+        .order-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-card h3 {
+            font-size: 1rem;
+            color: #264653;
+        }
+
+        .order-info {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        /* Orders Section Buttons Style */
+        .order-actions button {
+            background-color: #2a9d8f;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .order-actions button:hover {
+            background-color: #1b645c;
+        }
+
+        .order-actions .message-btn {
+            background-color: #264653;
+        }
+
+        .order-actions .message-btn:hover {
+            background-color: #122e32;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header and Navbar Copy Paste lang to halin sa internet my nigga -->
+    <div class="admin-navbar">
+        <h2>Dashboard</h2>
+        <a href="#"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="#"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="#"><i class="fas fa-plus"></i> Listings</a>
+        <a href="#" class="active"><i class="fas fa-box"></i> Orders</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+    <!-- Order Section -->
+    <div class="order-content">
+        <div class="navbar">
+            <h1>Order Management Dashboard</h1>
+        </div>
+        <div class="orders-section">
+            <h2>Orders</h2>
+            <!-- Order Card Example -->
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>Order ID: #1001</h3>
+                    <p>Product: Placeholder Product</p>
+                    <p>Price: $100</p>
+                    <p>Color: Blue</p>
+                </div>
+                <div class="order-actions">
+                    <button class="dispatch-btn">Dispatch</button>
+                    <button class="message-btn">Message Buyer</button>
+                </div>
+            </div>
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>Order ID: #1001</h3>
+                    <p>Product: Placeholder Product</p>
+                    <p>Price: $100</p>
+                    <p>Color: Blue</p>
+                </div>
+                <div class="order-actions">
+                    <button class="dispatch-btn">Dispatch</button>
+                    <button class="message-btn">Message Buyer</button>
+                </div>
+            </div>
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>Order ID: #1001</h3>
+                    <p>Product: Placeholder Product</p>
+                    <p>Price: $100</p>
+                    <p>Color: Blue</p>
+                </div>
+                <div class="order-actions">
+                    <button class="dispatch-btn">Dispatch</button>
+                    <button class="message-btn">Message Buyer</button>
+                </div>
+            </div>
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>Order ID: #1001</h3>
+                    <p>Product: Placeholder Product</p>
+                    <p>Price: $100</p>
+                    <p>Color: Blue</p>
+                </div>
+                <div class="order-actions">
+                    <button class="dispatch-btn">Dispatch</button>
+                    <button class="message-btn">Message Buyer</button>
+                </div>
+            </div>
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>Order ID: #1001</h3>
+                    <p>Product: Placeholder Product</p>
+                    <p>Price: $100</p>
+                    <p>Color: Blue</p>
+                </div>
+                <div class="order-actions">
+                    <button class="dispatch-btn">Dispatch</button>
+                    <button class="message-btn">Message Buyer</button>
+                </div>
+            </div>
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>Order ID: #1001</h3>
+                    <p>Product: Placeholder Product</p>
+                    <p>Price: $100</p>
+                    <p>Color: Blue</p>
+                </div>
+                <div class="order-actions">
+                    <button class="dispatch-btn">Dispatch</button>
+                    <button class="message-btn">Message Buyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

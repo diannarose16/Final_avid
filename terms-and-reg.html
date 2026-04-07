@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Form</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+      font-family: 'Arial', sans-serif;
+    }
+        /* Terms and Reg Container */
+        .form-wrapper {
+          width: 100%;
+          max-width: 780px;
+          background: #fff;
+          border-radius: 16px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 40px;
+          box-sizing: border-box;
+          height: 150%;
+          max-height: 865px;
+        }
+
+        .form-logo {
+          display: block;
+          margin: 0 auto 20px auto;
+          width: 120px;
+        }
+
+        .form-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .form-back-step {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #333;
+          font-size: 15px;
+        }
+
+        .form-back-step span {
+          cursor: pointer;
+        }
+
+        .form-register-back {
+          margin-right: 24px;
+          margin-left: -21px;
+          height: 24px;
+          width: 0px;
+          font-size: 40px;
+          color: #717171;
+        }
+
+        /* Terms and Reg Divider Style */
+        .terms-reg-design-line {
+          width: 100%;
+          height: 1px;
+          background: rgba(0, 0, 0, 0.1);
+          margin: 20px 0;
+        }
+
+        .form-title {
+          font-size: 15px;
+          color: #333;
+          margin: 0 0 10px 0;
+          font-weight: normal;
+          margin-bottom: 51px;
+          margin-left: 13px;
+          font-weight: bold;
+        }
+
+        /* Terms and Reg content sstyle */
+        .form-section {
+          border: 1px solid #ddd;
+          border-radius: 12px;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-content {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        /* Terms and Reg checkbox style */
+        .form-checkbox {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          font-size: 14px;
+          color: #04641B;
+          cursor: pointer;
+          margin-bottom: 5px;
+        }
+
+        .form-checkbox input {
+          margin-right: 10px;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          accent-color: green; 
+        }
+
+        .form-checkbox a {
+          margin: 0 3px; 
+          text-decoration: underline;
+          color: #04641B;
+          transition: .2s ease-out;
+        }
+
+        .form-checkbox a:hover {
+          color: #3d6dcb;
+        }
+
+        .form-submit {
+          display: block;
+          width: 100%;
+          max-width: 658px;
+          margin: 20px auto 0;
+          padding: 12px;
+          background-color: #6b7c83;
+          color: #fff;
+          text-align: center;
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: 0.5s ease;
+          margin-top: 260px;
+        }
+
+        .form-submit:hover {
+          background-color: #3a583e;
+        }
+  </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <!-- Logo -->
+        <img src="assets/image/white background.png" alt="Logo" class="form-logo">
+
+        <!-- Header -->
+        <div class="form-header">
+        </div>
+
+        <!-- Divider Design -->
+        <div class="terms-reg-design-line"></div>
+
+        <!-- Form Title -->
+        <div class="form-back-step">
+            <a href="register.html"><span class="form-register-back">&lt;</span></a>
+            <span>Step 2 of 2</span>
+        </div>
+        <h1 class="form-title">Terms & Conditions</h1>
+
+        <!-- Form Element -->
+        <form action="login.php" method="get">
+            <!-- New Section Styled Div -->
+            <div class="form-section">
+                <div class="form-content">
+                    <label class="form-checkbox">
+                        <input type="checkbox" required>
+                        Share my registration data with Avid's content providers for marketing purposes.
+                    </label>
+                    <label class="form-checkbox">
+                        <input type="checkbox" required>
+                        I agree to the 
+                        <a href="#">Avid Terms and Conditions of Use</a> 
+                        and 
+                        <a href="#">Privacy Policy</a>.
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>

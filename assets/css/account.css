@@ -1,0 +1,640 @@
+/* Container */
+.user-account-container {
+    display: flex;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #f5f5f5;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.sidebar .profile-info {
+    margin-bottom: 20px;
+}
+
+.sidebar .profile-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar .username {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sidebar .edit-profile {
+    color: #007bff;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-content h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.main-content .subheading {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Form */
+.account-form .form-group {
+    margin-bottom: 15px;
+}
+
+.account-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.account-form input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.account-form input[readonly] {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+}
+
+.account-form small {
+    font-size: 12px;
+    color: #777;
+}
+
+.account-form a {
+    color: #007bff;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.account-form .gender-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.account-form .gender-options label {
+    font-size: 14px;
+}
+
+.account-form .dob-select select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.account-form .save-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-form .save-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* -------------NOTOFICATION---------------- */
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+
+.sidebar .profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .profile img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.sidebar .profile p {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .menu li {
+    margin: 10px 0;
+}
+
+.sidebar .menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.main-content {
+    width: 80%;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.main-content p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+label input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="time"], select {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* -------------END NOTOFICATION---------------- */
+
+
+/* ------------- Add to Cart ---------------- */
+  /* Cart Page Section */
+  .cart-page-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-table th {
+    background-color: #f7f7f7;
+    font-size: 14px;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.cart-table img {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.cart-table .product-details {
+    font-size: 14px;
+}
+
+.cart-table .product-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.cart-table .product-variation {
+    color: #666;
+    font-size: 12px;
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cart-actions .delete-button {
+    color: #e74c3c;
+    font-size: 14px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cart-actions .delete-button:hover {
+    color: #c0392b;
+}
+
+.cart-summary {
+    text-align: right;
+}
+
+.cart-summary p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.cart-summary .total {
+    font-weight: bold;
+    font-size: 18px;
+    color: #04641B;
+}
+
+.checkout-button {
+    background-color: #04641B;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.checkout-button:hover {
+    background-color: #034315;
+}
+
+.motivators-section {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+.motivators-section a {
+    color: #04641B;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.motivators-section a:hover {
+    text-decoration: underline;
+}
+
+.cart-actions .delete-button, .delete-button {
+    background-color: #2b9754;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.cart-actions .delete-button:hover, .delete-button:hover {
+    background-color: #246e40;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Modal Background Overlay */
+.checkout-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Box */
+.checkout-modal-container {
+    background: #fff;
+    width: 900px;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 3;
+    max-height: 515px;
+}
+
+.suggestion-cart-paragraph#suggestioncart{
+    font-size: 16px;
+}
+
+.checkout-confirmation-paragraph#checkoutconfirmation{
+    font-size: 20px;
+}
+
+
+/* Modal Header */
+.checkout-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.checkout-modal-header h2 {
+    font-size: 30px;
+    color: #0e5d36;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Close Button */
+.checkout-modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.checkout-modal-close-btn:hover {
+    color: #e74c3c;
+}
+
+/* Steps Navigation next button and the tabs that are pressable on top */
+.checkout-modal-step-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px; 
+    text-transform: uppercase;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+}
+
+.checkout-modal-step-navigation .checkout-modal-step {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.checkout-modal-step.active {
+    font-weight: bold;
+    color: #04641B;
+    border-bottom: 2px solid #04641B;
+}
+
+/* Modal Step Content being hidden */
+.checkout-modal-step-content {
+    display: none;
+}
+
+.checkout-modal-step-content.active {
+    display: block;
+}
+
+/* Form Group */
+.checkout-modal-form-group {
+    margin-bottom: 25px;
+}
+
+/* Label text design */
+.checkout-modal-form-group label {
+    display: block;
+    font-size: 28px; 
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Input and Select */
+.checkout-modal-form-group input, 
+.checkout-modal-form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Radio option container */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Radio Buttons */
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px; 
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+/* Radio button */
+.radio-option input[type="radio"] {
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%; 
+    margin-right: 4px; 
+    flex-shrink: 0; 
+    position: relative; 
+}
+
+
+/* Radio button checked state (Green inner dot when active) style */
+.radio-option input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #04641B;
+}
+
+.radio-option label {
+    display: inline-block;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    font-size: 26px; 
+    line-height: 1.5; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    flex-grow: 1;
+}
+
+/* Modal Button Styles */
+.checkout-modal-btn {
+    background-color: #04641B;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.checkout-modal-btn:hover {
+    background-color: #034012;
+}
+
+.checkout-modal-btn.secondary {
+    background-color: #ddd;
+    color: #333;
+}
+
+.checkout-modal-btn.secondary:hover {
+    background-color: #bbb;
+}
+
+/* Modal Text Inside to be more responsive and wont allow any extension of the text by adding ellipsis which (.........) the text if it gets over the max-width */
+.label-text {
+    display: block;
+    max-height: 40px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.label-text.expanded {
+    white-space: normal; 
+}
+
+/* Confirmation Alert (Yes/No) Dialog Modal */
+.confirmation-dialog {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.confirmation-dialog-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 300px;
+}
+
+.confirmation-dialog .checkout-modal-btn {
+    margin: 10px;
+}
+
+.confirmation-dialog .checkout-modal-btn.secondary {
+    background-color: #ddd;
+    color: #333;
+}
+
+.confirmation-dialog .checkout-modal-btn.secondary:hover {
+    background-color: #bbb;
+}
+
+/* ------------- End Add to Cart ---------------- */

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        /********************* Admin header-admin *********************/
+        .sidebar {
+            width: 250px;
+            background-color: #2a9d8f;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.visible {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            padding: 15px 30px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #264653;
+        }
+
+        .sidebar a.active {
+            background-color: #1b645c;
+            font-weight: bold;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+
+        /********************* Admin Header *********************/
+        .header-admin {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-admin h1 {
+            font-size: 1.5rem;
+            color: #264653;
+        }
+
+        .header-admin .ai-status {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 76%;
+        }
+
+        .header-admin .ai-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-admin .ai-indicator.online {
+            background-color: green;
+        }
+
+        .toggle-navbar, .toggle-chat-sidebar {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+
+        /********************* Main content(Messaging Content) *********************/
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f6f9;
+            margin-left: 0;
+            transition: margin-left 0.3s ease-in-out;
+            margin-right: 0;
+        }
+
+        .main-content.shifted {
+            margin-left: 250px;
+        }
+
+        .main-content.chat-sidebar-shifted {
+            margin-right: 250px;
+        }
+
+        
+        /************************** Chat Area **************************/
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #2a9d8f;
+            color: #fff;
+            padding: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9fafb;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 1rem;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.received {
+            background-color: #e0e0e0;
+            align-self: flex-start;
+        }
+
+        .message.sent {
+            background-color: #2a9d8f;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .message.ai {
+            background-color: #f4f4fc;
+            border: 1px solid #2a9d8f;
+            align-self: flex-start;
+            font-style: italic;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: none;
+            font-size: 1rem;
+        }
+
+        .chat-input button {
+            background-color: #264653;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chat-input button:hover {
+            background-color: #1b645c;
+        }
+                /********************* Chat sidebar *********************/
+                .chat-sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            right: -250px;
+            height: 100%;
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        .chat-sidebar.visible {
+            right: 0;
+        }
+
+        .chat-sidebar .chat-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-sidebar .chat-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .chat-sidebar .chat-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .chat-sidebar .chat-item .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chat-sidebar .chat-item .info .name {
+            font-weight: bold;
+            color: #2a9d8f;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chat-sidebar .chat-item .info .product {
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header and Navbar Copy Paste lang to halin sa internet my nigga -->
+    <div class="sidebar" id="sidebar">
+        <h2>Dashboard</h2>
+        <a href="#"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="#" class="active"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="#"><i class="fas fa-plus"></i> Listings</a>
+        <a href="#"><i class="fas fa-box"></i> Orders</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <!-------------- Chat Sidebar -------------->
+    <div class="chat-sidebar" id="chat-sidebar">
+        <div class="chat-item">
+            <img src="https://via.placeholder.com/40" alt="User Profile">
+            <div class="info">
+                <div class="name">John Doe</div>
+                <div class="product">Dryfit Shirt</div>
+            </div>
+        </div>
+        <div class="chat-item">
+            <img src="https://via.placeholder.com/40" alt="User Profile">
+            <div class="info">
+                <div class="name">Jane Smith</div>
+                <div class="product">Running Shoes</div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------- Main Content -------------->
+    <div class="main-content" id="main-content">
+        <!-------------- Admin Header -------------->
+        <div class="header-admin">
+            <!-------------- Navbar-Toggle-Button -------------->
+            <i class="fas fa-bars toggle-navbar" id="toggle-navbar"></i>
+            <h1>Avid Messages</h1>
+            <div class="ai-status" id="ai-status">
+                <div class="ai-indicator" id="ai-indicator"></div>
+                <span>AI Auto-Reply</span>
+            </div>
+
+            <!-------------- Chat-Toggle-Sidebar -------------->
+            <i class="fas fa-comments toggle-chat-sidebar" id="toggle-chat-sidebar"></i>
+        </div>
+        <div class="chat-area">
+            <div class="chat-header">Chat with AI Assistant</div>
+            <!-------------- Messaging Content -------------->
+            <div class="chat-messages" id="chat-messages">
+                <div class="message received">Hello! How can I assist you today?</div>
+            </div>
+            <div class="chat-input">
+                <textarea rows="1" placeholder="Type your message..."></textarea>
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        const toggleSidebar = document.getElementById("toggle-navbar");
+        const aiIndicator = document.getElementById("ai-indicator");
+        const aiStatus = document.getElementById("ai-status");
+        const chatSidebar = document.getElementById("chat-sidebar");
+        const toggleChatSidebar = document.getElementById("toggle-chat-sidebar");
+
+        // Navbar toggle functionality
+        toggleSidebar.addEventListener("click", () => {
+            sidebar.classList.toggle("visible");
+            mainContent.classList.toggle("shifted");
+        });
+
+        // AI status toggle functionality for the eyes only
+        aiStatus.addEventListener("click", () => {
+            aiIndicator.classList.toggle("online");
+        });
+
+        // Chat Sidebar toggle functionality
+        toggleChatSidebar.addEventListener("click", () => {
+            chatSidebar.classList.toggle("visible");
+            mainContent.classList.toggle("chat-sidebar-shifted");
+        });
+    </script>
+</body>
+</html>
